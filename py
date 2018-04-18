@@ -88,7 +88,7 @@ if [ -f .git/config ]; then
 fi
 
 # start atom, opens in separate window and this script continues
-atom
+atom `pwd`
 ret=$?
 if [ 0 != $ret ]; then
   echo "please download and install 'atom' from https://atom.io/"
