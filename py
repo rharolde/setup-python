@@ -54,7 +54,8 @@ if [ ! -d $basedir/$project ]; then
     mkdir -p $project
   fi
 fi
-cd $project
+
+cd $project || echo failed to create dir && exit 1
 
 # set up virtualenv if not set up yet
 if [ ! -f ./venv/bin/activate ]; then
