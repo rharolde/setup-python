@@ -87,6 +87,11 @@ if [ -f .git/config ]; then
   git status
 fi
 
+a=`pip show pytest`
+if [ -z "$a" ]; then
+  pip install pytest
+fi
+
 # start atom, opens in separate window and this script continues
 atom `pwd`
 ret=$?
