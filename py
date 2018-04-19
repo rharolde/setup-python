@@ -90,14 +90,26 @@ fi
 a=`pip show pytest`
 if [ -z "$a" ]; then
   pip install pytest
+  echo "pytest installed"
 fi
 
-# start atom, opens in separate window and this script continues
-atom `pwd`
-ret=$?
-if [ 0 != $ret ]; then
+a=`pip show pylint`
+if [ -z "$a" ]; then
+  pip install pylint
+  echo "pylint installed"
+fi
+
+# check for 'atom' editor package
+a=`apt version atom`
+if [ -z "$a"]; then
   echo "please download and install 'atom' from https://atom.io/"
 fi
+
+# suggest commands
+echo "suggested commands:"
+echo "  atom ."
+echo "  pytest *.py"
+echo "  pylint -q"
 
 # open shell for user
 bash
