@@ -108,8 +108,8 @@ fi
 # suggest commands
 echo "suggested commands:"
 echo "  atom ."
-echo "  pytest *.py"
-echo "  pylint -q"
+echo "  pytest -q"
+echo "  pylint *.py"
 
 # open shell for user
 bash
