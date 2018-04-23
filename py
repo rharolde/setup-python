@@ -115,7 +115,7 @@ fi
 # suggest commands
 echo "suggested commands:"
 echo "  atom ."
-echo "  pytest -q"
+echo "  pytest"
 echo "  pylint *.py"
 
 # open shell for user
