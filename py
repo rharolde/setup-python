@@ -99,6 +99,13 @@ if [ -z "$a" ]; then
   echo "pylint installed"
 fi
 
+if [ ! -f pytest.ini ]; then
+  cat >> pytest.ini <<EOF
+[pytest]
+addopts=-q
+EOF
+fi
+
 # check for 'atom' editor package
 a=`apt version atom`
 if [ -z "$a"]; then
