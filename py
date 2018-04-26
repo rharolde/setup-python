@@ -108,7 +108,7 @@ fi
 
 # check for 'atom' editor package
 a=`apt version atom`
-if [ -z "$a"]; then
+if [ -z "$a" ]; then
   echo "please download and install 'atom' from https://atom.io/"
 fi
 
