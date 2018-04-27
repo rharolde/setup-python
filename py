@@ -52,6 +52,7 @@ if [ ! -d $basedir/$project ]; then
     git clone $giturl
   else
     mkdir -p $project
+    echo "You can run 'git init' for local-only git"
   fi
 fi
 
@@ -89,14 +90,26 @@ fi
 
 a=`pip show pytest`
 if [ -z "$a" ]; then
-  pip install pytest
-  echo "pytest installed"
+  out=`pip install pytest`
+  ret=$?
+  a=`pip show pytest`
+  if [ -z "$a" -o 0 -ne $ret ]; then
+    echo "pytest install failed"
+  else
+    echo "pytest installed"
+  fi
 fi
 
 a=`pip show pylint`
 if [ -z "$a" ]; then
-  pip install pylint
-  echo "pylint installed"
+  out=`pip install pylint 2>&1`
+  ret=$?
+  a=`pip show pylint`
+  if [ -z "$a" -o 0 -ne $ret ]; then
+    echo "pylint install failed"
+  else
+    echo "pylint installed"
+  fi
 fi
 
 if [ ! -f pytest.ini ]; then
