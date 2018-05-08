@@ -9,8 +9,6 @@
 # atom
 
 # to be added:
-# pylint
-# pytest
 # template
 
 # rharolde@umich.edu 2018/04/11
@@ -112,6 +110,18 @@ if [ -z "$a" ]; then
   fi
 fi
 
+a=`pip show flake8`
+if [ -z "$a" ]; then
+  out=`pip install flake8 2>&1`
+  ret=$?
+  a=`pip show flake8`
+  if [ -z "$a" -o 0 -ne $ret ]; then
+    echo "flake8 install failed"
+  else
+    echo "flake8 installed"
+  fi
+fi
+
 if [ ! -f pytest.ini ]; then
   cat >> pytest.ini <<EOF
 [pytest]
@@ -130,6 +140,7 @@ echo "suggested commands:"
 echo "  atom ."
 echo "  pytest"
 echo "  pylint *.py"
+echo "  flake8 *.py"
 
 # open shell for user
 bash
