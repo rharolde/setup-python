@@ -18,8 +18,8 @@ result=`apt-get -s install python-virtualenv | grep "0 upgraded, 0 newly"`
 result2=`apt-get -s install git | grep "0 upgraded, 0 newly installed"`
 if [ -z "$result" -o -z "$result2" ]; then
   echo "missing some packages, please run:"
-  echo "sudo apt-get -s install python-virtualenv"
-  echo "sudo apt-get -s install git"
+  echo "sudo apt-get install python-virtualenv"
+  echo "sudo apt-get install git"
   exit 1
 fi
 
