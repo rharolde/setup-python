@@ -126,6 +126,18 @@ if [ -z "$a" ]; then
   fi
 fi
 
+a=`pip3 show black`
+if [ -z "$a" ]; then
+  out=`pip3 install black 2>&1`
+  ret=$?
+  a=`pip3 show black`
+  if [ -z "$a" -o 0 -ne $ret ]; then
+    echo "black install failed"
+  else
+    echo "black installed"
+  fi
+fi
+
 if [ ! -f pytest.ini ]; then
   cat >> pytest.ini <<EOF
 [pytest]
@@ -143,6 +155,7 @@ fi
 echo "suggested commands:"
 echo "  atom ."
 echo "  pytest"
+echo "  black *.py"
 echo "  pylint *.py"
 echo "  flake8 *.py"
 
